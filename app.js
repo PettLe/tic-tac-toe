@@ -1,5 +1,5 @@
 const Gameboard = (() => {
-    let gameBoard = ["X", "", "", "", "", "", "", "", ""];
+    let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
     const Player = (marker) => {
         marker: marker;
@@ -11,26 +11,40 @@ const Gameboard = (() => {
 
 
     console.log(player1.marker);
-//    gameBoard[4] = "X";
-//    console.log(gameBoard); Nää toimii tyhjäänkin arrayhyn
+ //   console.log(gameBoard); 
 
 //When square is clicked, push value to array
     const gameController = (() => {
+
+        //Push the player marker to the array
+        let clickNum = 0;
         for (i = 0; i < gameBoard.length; i++) {
             const square = document.getElementsByClassName("square");
+
             square[i].addEventListener("click", function(e) {
                 const index = e.target.getAttribute("value");
-                console.log(i);
-                console.log(e.target.getAttribute("value"));
+
+
+             //Determine whose turn
+                clickNum++;
+                console.log(clickNum);
             if (gameBoard[index] === "") {
+                if (clickNum % 2 === 0) {
                 gameBoard[index] = player2.marker;
+                } else {
+                    gameBoard[index] = player1.marker;
+                }
                 console.log(gameBoard);
             }
                 displayController();
             })
         }
+  //      if (gameBoard[[1], [4], [7]] === player2.marker) {
+  //          console.log("YAY");
+  //      }
+      
     })();
-    //gameController();
+
 
     //Render the gameboard array
     const displayController = (function() {
@@ -43,8 +57,5 @@ const Gameboard = (() => {
         }
 
     });
-
-    //TÄTÄ EI TARVITA LOPULLISESSA, TESTI VAIN
-    displayController();
 
 })();
