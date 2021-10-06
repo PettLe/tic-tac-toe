@@ -26,6 +26,17 @@ body {
   border-radius: 5px;
   height: 10vw;
   width: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Libre Baskerville";
+  color: rgb(44, 209, 231);
+  font-size: 6em;
+}
+
+.O {
+  color: rgb(255, 139, 62);
 }
 
 .square:hover {

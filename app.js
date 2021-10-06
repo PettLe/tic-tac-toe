@@ -18,6 +18,14 @@ const Gameboard = (() => {
 
     const displayController = (function() {
 //Render the gameboard array
+        const square = document.getElementsByClassName("square");
+        for (i = 0; i < gameBoard.length; i++) {
+        square[i].textContent = gameBoard[i];
+        if (square[i].textContent === "O") {
+            square[i].classList.add("O");
+        }
+        }
+
     })();
 
 })();
