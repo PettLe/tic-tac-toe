@@ -15,16 +15,16 @@ const Gameboard = (() => {
 //    console.log(gameBoard); Nää toimii tyhjäänkin arrayhyn
 
 //When square is clicked, push value to array
-    const gameController = (function() {
+    const gameController = (() => {
         for (i = 0; i < gameBoard.length; i++) {
             const square = document.getElementsByClassName("square");
-            //   square.dataset.index = i;
             square[i].addEventListener("click", function(e) {
-                console.log(e.target);
-            if (gameBoard[2] === "") {
-                gameBoard[2] = player2.marker;
+                const index = e.target.getAttribute("value");
+                console.log(i);
+                console.log(e.target.getAttribute("value"));
+            if (gameBoard[index] === "") {
+                gameBoard[index] = player2.marker;
                 console.log(gameBoard);
-                //    gameBoard[i].push("X");
             }
                 displayController();
             })
