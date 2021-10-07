@@ -9,6 +9,7 @@ const Gameboard = (() => {
     const player1 = Player("X");
     const player2 = Player("O");
 
+    
 
     console.log(player1.marker);
  //   console.log(gameBoard); 
@@ -35,15 +36,62 @@ const Gameboard = (() => {
                     gameBoard[index] = player1.marker;
                 }
                 console.log(gameBoard);
+                console.log();
             }
+                checkWinner();
                 displayController();
             })
         }
-  //      if (gameBoard[[1], [4], [7]] === player2.marker) {
-  //          console.log("YAY");
-  //      }
-      
+
     })();
+
+    //Display the winner. Somehow
+    const checkWinner = (function() {
+    if (gameBoard[0] !== "" && gameBoard[0] ===  gameBoard[1] && gameBoard[1] === gameBoard[2]) {
+        if (gameBoard[0] === player1.marker) {
+        return console.log("Pelaaja 1 voitti");
+        } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (gameBoard[3] !== "" && gameBoard[3]=== gameBoard[4] && gameBoard[4] === gameBoard[5]) {
+            if (gameBoard[3] === player1.marker) {
+            return console.log("Pelaaja 1 voitti");
+        } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (gameBoard[6] !== "" && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8]) {
+        if (gameBoard[6] === player1.marker) {
+            return console.log("Pelaaja 1 voitti");
+            } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (gameBoard[0] !== "" && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6]) {
+        if (gameBoard[0] === player1.marker) {
+            return console.log("Pelaaja 1 voitti");
+        } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (gameBoard[1] !== "" && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7]) {
+        if (gameBoard[1] === player1.marker) {
+            return console.log("Pelaaja 1 voitti");
+            } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (gameBoard[2] !== "" && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8]) {
+        if (gameBoard[2] === player1.marker) {
+            return console.log("Pelaaja 1 voitti");
+            } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (gameBoard[0] !== "" && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
+        if (gameBoard[0] === player1.marker) {
+            return console.log("Pelaaja 1 voitti");
+            } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (gameBoard[2] !== "" && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
+        if (gameBoard[2] === player1.marker) {
+            return console.log("Pelaaja 1 voitti");
+            } else {
+            return console.log("Pelaaja 2 voitti");}
+    } else if (!gameBoard.includes("")) {
+        return console.log("Tasoissa ollaan!");
+    }
+
+});
 
 
     //Render the gameboard array
@@ -54,6 +102,7 @@ const Gameboard = (() => {
         if (square[i].textContent === "O") {
             square[i].classList.add("O");
         }
+        
         }
 
     });
