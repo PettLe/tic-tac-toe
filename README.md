@@ -8,3 +8,5 @@ But at least everything else turned out fairly clean, no global variables (which
 Tried to make it so players don't have access to where they shouldn't.
 
 Creating players and their markers... it feels I somehow oversimplified it. Can it really be as minimalistic and simple as I made it to be? Am I forgetting something?
+
+Div display for the winner is difficult. I managed to create it fairly simple, but removing it (as restarting the game) is a problem.

@@ -16,19 +16,32 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 3vh;
 }
 
 header {
   padding-top: 5vh;
   padding-bottom: 15vh;
 }
-.board {
-  display: flex;
+#board {
+  display: none;
   width: 24vw;
   height: 24vw;
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: auto;
+}
+
+#playBtn {
+  padding: 3vh;
+  background-color: rgb(4, 160, 250);
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+#playBtn:hover {
+  background-color: rgb(44, 209, 231);
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .square {
@@ -102,4 +115,20 @@ header {
 #border9 {
   border-left: 2px solid rgb(4, 160, 250);
   border-top: 2px solid rgb(4, 160, 250);
+}
+
+form input {
+  border-radius: 5px;
+  color: #4d4d4d;
+}
+
+footer {
+  background-color: #292828;
+  color: rgba(4, 160, 250, 0.76);
+  width: 100vw;
+  height: 9vh;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 3vh;
+  margin-top: auto;
 }
