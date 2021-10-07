@@ -9,4 +9,14 @@ Tried to make it so players don't have access to where they shouldn't.
 
 Creating players and their markers... it feels I somehow oversimplified it. Can it really be as minimalistic and simple as I made it to be? Am I forgetting something?
 
-Div display for the winner is difficult. I managed to create it fairly simple, but removing it (as restarting the game) is a problem.
+Div display for the winner is difficult. I managed to create it fairly simple, but removing it (as restarting the game) is a problem. Eventually managed to do it
+with quite a juggling act. Used length of the nodes and removed it there.
+
+Had also problem with the player names. For some reason it only declared them AFTER they've been inputed into value and the whole page has been refreshed once.
+Finally I came up with an idea to put the creating of new players inside a function and calling it during the first phase of the game.
+Probably not optimal but it works.
+
+Getting the game to display winner's name in color was a tough case. Managed to do it with implementing innerHTML. I know it's usually not a good idea (security risks), but this time it was
+only way I could figure.
+
+Overall this project wasn't too hard. My confidence with DOM manipulation is growing more.

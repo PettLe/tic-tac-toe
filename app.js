@@ -1,15 +1,22 @@
 const Gameboard = (() => {
     let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
+
+    //Creating players
     const Player = (name, marker) => {
         this.name = name;
         this.marker = marker;
         return {name, marker};
     };
 
-    const player1 = Player(document.getElementById("player1Name").value, "X");
-    const player2 = Player(document.getElementById("player2Name").value, "O");
-
+    let player1;
+    let player2;
+    
+    const definePlayers = (function() {
+    player1 = Player(document.getElementById("player1Name").value, "X");
+    player2 = Player(document.getElementById("player2Name").value, "O");
+    return {player1, player2}
+    })
 
     let clickNum = 0;
     const gameController = (() => {
@@ -19,11 +26,11 @@ const Gameboard = (() => {
             const square = document.getElementsByClassName("square");
             square[i].addEventListener("click", function(e) {
                 const index = e.target.getAttribute("value");
-                console.log(player1.name);
+                definePlayers();
 
              //Determine whose turn
+             if (gameBoard[index] === "") {
                 clickNum++;
-            if (gameBoard[index] === "") {
                 if (clickNum % 2 === 0) {
                 gameBoard[index] = player2.marker;
                 } else {
@@ -34,7 +41,6 @@ const Gameboard = (() => {
                 displayController();
             })
         }
-
     })();
 
 
@@ -83,19 +89,18 @@ const Gameboard = (() => {
     } else if (!gameBoard.includes("")) {
         return winner("gameTie");
     }
-
 });
 
     const winner = (function(name) {
-        const playerWin = `Congratulations ${name}, you are the Winner!`;
         const board = document.getElementById("board");
         board.style.display = "none";
         const body = document.querySelector("body");
         const winScreen = document.createElement("div");
+        winScreen.classList.add("winScreen");
         if (name === "gameTie") {
             winScreen.textContent = "It's a Tie!";
         } else {
-        winScreen.textContent = playerWin;
+        winScreen.innerHTML = `Congratulations <span style="color:rgb(255, 139, 62);   text-shadow: 0 0 4px rgb(255, 153, 86);">${name}</span>, you are the Winner!`;
         }
         body.insertBefore(winScreen, board);
     })
@@ -115,7 +120,8 @@ const Gameboard = (() => {
         clickNum = 0;
         gameBoard = ["", "", "", "", "", "", "", "", ""];
         displayController();
-    })})()
+    })
+})()
 
     //Render the gameboard array
     const displayController = (function() {

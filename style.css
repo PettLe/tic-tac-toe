@@ -21,7 +21,7 @@ body {
 
 header {
   padding-top: 5vh;
-  padding-bottom: 15vh;
+  padding-bottom: 7vh;
 }
 #board {
   display: none;
@@ -56,6 +56,11 @@ header {
   font-family: "Libre Baskerville";
   color: rgb(44, 209, 231);
   font-size: 1em;
+}
+
+.square:active:hover {
+  background-color: #302f2f;
+  box-shadow: inset 5px 5px 5px 5px #292828;
 }
 
 .O {
@@ -131,4 +136,18 @@ footer {
   text-align: center;
   padding-top: 3vh;
   margin-top: auto;
+}
+
+.winScreen {
+  text-shadow: 0 0 4px rgb(30, 142, 156);
+  animation: fadein 3s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
