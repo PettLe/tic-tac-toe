@@ -7,25 +7,19 @@ const Gameboard = (() => {
         return {name, marker};
     };
 
+    const player1 = Player(document.getElementById("player1Name").value, "X");
+    const player2 = Player(document.getElementById("player2Name").value, "O");
 
-    let name1 = document.getElementById("player1Name").value;
-    let name2 = document.getElementById("player2Name").value;
-    const player1 = Player(name1, "X");
-    const player2 = Player(name2, "O");
 
-    
-    console.log(player1.name);
-
-//When square is clicked, push value to array
+    let clickNum = 0;
     const gameController = (() => {
 
-        //Push the player marker to the array
-        let clickNum = 0;
+        //Push the player marker to the array when square is clicked
         for (i = 0; i < gameBoard.length; i++) {
             const square = document.getElementsByClassName("square");
             square[i].addEventListener("click", function(e) {
                 const index = e.target.getAttribute("value");
-
+                console.log(player1.name);
 
              //Determine whose turn
                 clickNum++;
@@ -35,8 +29,6 @@ const Gameboard = (() => {
                 } else {
                     gameBoard[index] = player1.marker;
                 }
-                console.log(gameBoard);
-                console.log();
             }
                 checkWinner();
                 displayController();
@@ -45,9 +37,8 @@ const Gameboard = (() => {
 
     })();
 
-    //Display the winner
 
-
+    //Check winning conditions
     const checkWinner = (function() {
     if (gameBoard[0] !== "" && gameBoard[0] ===  gameBoard[1] && gameBoard[1] === gameBoard[2]) {
         if (gameBoard[0] === player1.marker) {
@@ -90,36 +81,41 @@ const Gameboard = (() => {
             } else {
             return winner(player2.name);}
     } else if (!gameBoard.includes("")) {
-        return console.log(gameTie);
+        return winner("gameTie");
     }
 
 });
 
     const winner = (function(name) {
         const playerWin = `Congratulations ${name}, you are the Winner!`;
-        const gameTie = "It's a Tie!";
         const board = document.getElementById("board");
         board.style.display = "none";
         const body = document.querySelector("body");
         const winScreen = document.createElement("div");
-        //winScreen.id = "winScreen";
+        if (name === "gameTie") {
+            winScreen.textContent = "It's a Tie!";
+        } else {
         winScreen.textContent = playerWin;
+        }
         body.insertBefore(winScreen, board);
     })
 
     //Play / Restart button
+    const playBtn = (function() {
     const form = document.querySelector("form");
     const playBtn = document.getElementById("playBtn");
     const board = document.getElementById("board");
-    const winScreen = document.getElementById("winScreen");
+    const body = document.querySelector("body");
     playBtn.addEventListener("click", function() {
-      //  winScreen.style.display = "none";
+        if (body.childNodes.length > 17) {
+        body.removeChild(body.childNodes[3]);}
         form.style.display = "none";
         board.style.display = "flex";
         playBtn.textContent = "Restart";
+        clickNum = 0;
         gameBoard = ["", "", "", "", "", "", "", "", ""];
         displayController();
-    })
+    })})()
 
     //Render the gameboard array
     const displayController = (function() {
