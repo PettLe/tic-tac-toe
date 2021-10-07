@@ -113,7 +113,7 @@ const Gameboard = (() => {
     const body = document.querySelector("body");
     playBtn.addEventListener("click", function() {
         console.log(body.childNodes.length);
-        if (body.childNodes.length > 17) {
+        if (body.childNodes.length > 13) {
         body.removeChild(body.childNodes[3]);}
         form.style.display = "none";
         board.style.display = "flex";
